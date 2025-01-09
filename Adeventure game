@@ -1,0 +1,90 @@
+def Intro():
+    print("""
+    You are outside of an old creepy house.
+    You are currently in the dark cold air while it's raining.
+    You hear noises inside the haunted house and have a gut feeling something is gonna happen
+    You enter the door and start to hear strange noises everywhere that you dont know where its coming from.
+    To start the game you may choose up or down for the elevator to take you to your next spot. Type 'Start' to start the game.
+    """)
+    Choice = input ("\nDo you want to go in? ").lower()
+    
+    if Choice == 'start': 
+        LivingRoom()
+    else:
+        print("Invalid choice. try again.")
+        Intro() 
+    
+    
+    
+def LivingRoom():
+    print("""
+    You are now in the living room. The living room is your safe palce. 
+    You start to walk near the elevator and it has the option for 'up' or 'down'.
+    """)
+    
+    Choice = input("\nDo you go to the 'up' or 'down'? ").lower()
+    
+    if Choice == 'down':
+        Hallway()
+    elif Choice == 'up':
+        Bathroom()
+    else:
+        print("Invalid choice. Try again.")
+        Intro()
+        
+def Bathroom():
+    print(""" You took the elevator and went up to the where the bathroom is located. 
+    You start to get nervous because you hear eerie sounds throughout the two bedrooms that you have to go in to enter a new location.""")
+    
+    Choice = input("\nDo you go to the 'bedroom 1' or 'bedroom 2'? ").lower()
+    
+    if Choice == 'bedroom 2':
+        Die("You entered the wrong room and got jumped by a lot of scary clowns")
+    elif Choice == 'bedroom 1' :
+        Die("You entered the wrong room and got attacked by an knife that stabbed you in the chest")
+    else: 
+        print("Invalid choice. Try again.")
+        Bathroom()
+               
+def Hallway():
+    print("""
+    You took the elevator and went down which took you to the hallway. Down here there are more bedrooms than upstairs.
+    There are three bedrooms that you can enter before moving on to the next location.
+    You hear creepy and eeire noises coming from the rooms. 
+    You may choose out of the three bedrooms to go into (Bedroom 3, 4 or 5). Choose wisely!
+    """)
+    
+    Choice = input("\nDo you go to the 'bedroom 3', 'bedroom 4' or 'bedroom 5'? ").lower()
+    
+    if Choice == 'bedroom 3':
+        Win()
+        
+    elif Choice == 'bedroom 4':
+        Die("You've been attacked by jason")
+    elif Choice == 'bedroom 5':
+        Die("You entred the wrong room an got locked inside the door in the dark")
+    else: 
+        print ("Invalid choice. Try again")
+        Hallway()
+   
+def Win():
+    print("""CONGRATS. Since had choosed the right bedroom door,
+       you went through a portal that had took you away from all of the horror.""")
+    play_again()
+    
+def Die(reason):
+    print("\nGAMEOVER:" + reason)
+    play_again()
+
+def play_again():
+    Choice = input("\nDo you want to play again? (yes/no):  ").lower()
+    
+    if Choice == 'yes':
+        Intro()
+    else:
+        print("Thanks for playing!")
+        
+# Start the game
+Intro()
+LivingRoom()
+    
